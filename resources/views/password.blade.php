@@ -26,28 +26,26 @@
 						</div>
 					@endif
 
-					{!! Form::open(['class' => 'form-horizontal', 'method' => 'put', 'action' => 'PasswordController@updatePassword']) !!}
-
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					{!! Form::open(['class' => 'form-horizontal', 'method' => 'put', 'action' => 'ProfileController@updatePassword']) !!}
 
 						<div class="form-group">
 							{!! Form::label('old_password', 'Old Password', ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
-								{!! Form::input('password', 'old_password', '', ['class' => 'form-control']) !!}
+								{!! Form::input('password', 'old_password', null, ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							{!! Form::label('password', 'New Password', ['class' => 'col-md-4 control-label']) !!}
+							{!! Form::label('new_password', 'New Password', ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
-								{!! Form::input('password', 'password', '', ['class' => 'form-control']) !!}
+								{!! Form::input('password', 'password', null, ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							{!! Form::label('password_confirmation', 'Confrim Password', ['class' => 'col-md-4 control-label']) !!}
+							{!! Form::label('new_password_confirmation', 'New Password Confirmation', ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
-								{!! Form::input('password', 'password_confirmation', '', ['class' => 'form-control']) !!}
+								{!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
