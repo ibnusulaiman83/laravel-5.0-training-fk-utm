@@ -14,6 +14,9 @@
 Route::put('profile', 'ProfileController@updateProfile');
 Route::get('profile', 'ProfileController@index');
 
+Route::put('password', 'PasswordController@updatePassword');
+Route::get('password', 'PasswordController@index');
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('profile', 'ProfileController@index');
