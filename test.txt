@@ -1,4 +1,0 @@
-up line
-test.txt
-first text
-last line
