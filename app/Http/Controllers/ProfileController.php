@@ -2,6 +2,8 @@
 
 use Auth;
 use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\PasswordRequest;
+use Hash;
 
 class ProfileController extends Controller {
 
@@ -25,9 +27,7 @@ class ProfileController extends Controller {
 
 		$user = Auth::user();
 
-		return view('profile', compact(
-			'user'
-		));
+		return view('profile', compact('user'));
 	}
 
 	public function updateProfile(ProfileRequest $request)
@@ -41,5 +41,32 @@ class ProfileController extends Controller {
 			->with('flash_success', 'Profile updated successfully.');
 	}
 
+	public function changePassword()
+	{
+		return view('password');
+	}
+
+	public function updatePassword(PasswordRequest $request)
+	{
+		$user = Auth::user();
+
+		if (!Hash::check($request->get('old_password'), $user->password))
+		{
+			return redirect(action('ProfileController@changePassword'))
+				->with('flash_error', 'Your old password was entered incorrectly. Please enter it again.');
+		}
+
+		if ($request->get('password') != $request->get('password_confirmation'))
+		{
+			return redirect(action('ProfileController@changePassword'))
+				->with('flash_error', 'The two password fields didn\'t match, please try again.');
+		}
+
+		$user->password =  Hash::make($request->get('password'));
+		$user->save();
+
+		return redirect(action('ProfileController@changePassword'))
+			->with('flash_success', 'Your password has been changed.');
+	}
 
 }
