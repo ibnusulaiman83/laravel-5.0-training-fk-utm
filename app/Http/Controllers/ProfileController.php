@@ -1,17 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-class ProfileController extends Controller {
+use Auth;
 
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders your application's "dashboard" for users that
-	| are authenticated. Of course, you are free to change or remove the
-	| controller as you wish. It is just here to get your app started!
-	|
-	*/
+class ProfileController extends Controller {
 
 	/**
 	 * Create a new controller instance.
@@ -30,7 +21,12 @@ class ProfileController extends Controller {
 	 */
 	public function index()
 	{
-		return view('profile');
+
+		$user = Auth::user();
+
+		return view('profile', compact(
+			'user'
+		));
 	}
 
 }
