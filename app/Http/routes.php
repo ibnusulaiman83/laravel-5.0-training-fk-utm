@@ -11,6 +11,7 @@
 |
 */
 
+Route::put('profile', 'ProfileController@updateProfile');
 Route::get('profile', 'ProfileController@index');
 
 Route::get('/', 'WelcomeController@index');

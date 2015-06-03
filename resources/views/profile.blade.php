@@ -18,34 +18,29 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/profile') }}">
+					@if (Session::get('flash_success'))
+						<div class="alert alert-success fade in m-b-15">
+							<strong>Success!</strong>
+							{!! Session::get('flash_success') !!}
+							<span class="close" data-dismiss="alert">×</span>
+						</div>
+					@endif
+
+					{!! Form::open(['class' => 'form-horizontal', 'method' => 'put', 'action' => 'ProfileController@updateProfile']) !!}
+
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
+							{!! Form::label('name', 'Name', ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+								{!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+							{!! Form::label('email', 'Email', ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
+								{!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
@@ -56,7 +51,7 @@
 								</button>
 							</div>
 						</div>
-					</form>
+					{!! Form::close() !!}
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Auth;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller {
 
@@ -28,5 +29,17 @@ class ProfileController extends Controller {
 			'user'
 		));
 	}
+
+	public function updateProfile(ProfileRequest $request)
+	{
+		$user = Auth::user();
+		$user->name = $request->get('name');
+		$user->email = $request->get('email');
+		$user->save();
+
+		return redirect(action('ProfileController@index'))
+			->with('flash_success', 'Profile updated successfully.');
+	}
+
 
 }
