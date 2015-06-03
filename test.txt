@@ -1,2 +1,3 @@
 test.txt
 first line
+last line
