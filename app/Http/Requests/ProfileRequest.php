@@ -24,10 +24,7 @@ class ProfileRequest extends Request
 
 		return [
 			'name' => ['required'],
-			'email' => ['required', 'unique:users,email,' . $user->id . ''],
-			'currentPassword' => ['required'],
-			'newPassword' => ['required'],
-			'confirmPassword' => ['required']
+			'email' => ['required', 'unique:users,email,' . $user->id . '']
   	];
 	}
 

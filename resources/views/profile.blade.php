@@ -45,27 +45,6 @@
 						</div>
 
 						<div class="form-group">
-							{!! Form::label('currentPassword', 'Password', ['class' => 'col-md-4 control-label']) !!}
-							<div class="col-md-6">
-								{!! Form::input('password','currentPassword', $user->currentPassword, ['class' => 'form-control']) !!}
-							</div>
-						</div>
-
-						<div class="form-group">
-							{!! Form::label('newPassword', 'New Password', ['class' => 'col-md-4 control-label']) !!}
-							<div class="col-md-6">
-								{!! Form::input('password','newPassword', $user->newPassword, ['class' => 'form-control']) !!}
-							</div>
-						</div>
-
-						<div class="form-group">
-							{!! Form::label('confirmPassword', 'Confirm Password', ['class' => 'col-md-4 control-label']) !!}
-							<div class="col-md-6">
-								{!! Form::input('password','confirmPassword', $user->confirmPassword, ['class' => 'form-control']) !!}
-							</div>
-						</div>
-
-						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
 									Update
