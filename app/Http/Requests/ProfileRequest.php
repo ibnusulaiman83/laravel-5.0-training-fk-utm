@@ -1,7 +1,5 @@
 <?php namespace App\Http\Requests;
 
-use User;
-
 class ProfileRequest extends Request
 {
 

@@ -1,7 +1,5 @@
 <?php namespace App\Http\Requests;
 
-use User;
-
 class PasswordRequest extends Request
 {
 
@@ -22,12 +20,9 @@ class PasswordRequest extends Request
 	 */
 	public function rules()
 	{
-		$user = \Auth::user();
-
 		return [
-			'currentPassword' => ['required'],
-			'newPassword' => ['required'],
-			'confirmPassword' => ['required']
+			'old_password'	=> ['required'],
+			'password' 			=> 'required|confirmed|min:6',
   	];
 	}
 
