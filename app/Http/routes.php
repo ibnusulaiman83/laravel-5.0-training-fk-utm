@@ -11,6 +11,9 @@
 |
 */
 
+Route::put('change_password', 'UpdatePasswordController@updatePassword');
+Route::get('change_password', 'UpdatePasswordController@index');
+
 Route::put('profile', 'ProfileController@updateProfile');
 Route::get('profile', 'ProfileController@index');
 
@@ -21,7 +24,6 @@ Route::get('profile', 'ProfileController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('profile', 'ProfileController@index');
-
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
