@@ -2,6 +2,9 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Whoops\Handler\JsonResponseHandler;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
 
 class Handler extends ExceptionHandler {
 
@@ -11,7 +14,7 @@ class Handler extends ExceptionHandler {
 	 * @var array
 	 */
 	protected $dontReport = [
-		'Symfony\Component\HttpKernel\Exception\HttpException'
+		'Symfony\Component\HttpKernel\Exception\HttpException',
 	];
 
 	/**
@@ -22,8 +25,7 @@ class Handler extends ExceptionHandler {
 	 * @param  \Exception  $e
 	 * @return void
 	 */
-	public function report(Exception $e)
-	{
+	public function report(Exception $e) {
 		return parent::report($e);
 	}
 
@@ -34,8 +36,24 @@ class Handler extends ExceptionHandler {
 	 * @param  \Exception  $e
 	 * @return \Illuminate\Http\Response
 	 */
-	public function render($request, Exception $e)
-	{
+	public function render($request, Exception $e) {
+		if ($this->isHttpException($e)) {
+			return $this->renderHttpException($e);
+		}
+
+		if (config('app.debug')) {
+			$whoops = new Run;
+			$whoops->pushHandler($request->ajax() ? new JsonResponseHandler : new PrettyPageHandler);
+			$whoops->allowQuit(false);
+			$whoops->writeToOutput(false);
+
+			// Never, ever, use environment variables in responses, not even when debugging
+			$_SERVER = array_except($_SERVER, array_keys($_ENV));
+			$_ENV = [];
+
+			return response($whoops->handleException($e), $whoops->sendHttpCode());
+		}
+
 		return parent::render($request, $e);
 	}
 
