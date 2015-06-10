@@ -1,0 +1,7 @@
+{
+	"name": "Patient",
+	"slug": "patient",
+	"version": "1.0",
+	"description": "This is the description for the Patient module.",
+	"enabled": true
+}
