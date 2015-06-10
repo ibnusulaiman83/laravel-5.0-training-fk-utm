@@ -15,15 +15,11 @@ Route::put('change_password', 'ProfileController@updatePassword');
 Route::get('change_password', 'ProfileController@changePassword');
 
 Route::put('profile', 'ProfileController@updateProfile');
-Route::get('profile', 'ProfileController@index');
+Route::get('profile', ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('profile', 'ProfileController@index');
-
 Route::get('home', 'HomeController@index');
-
-Route::get('profile', 'ProfileController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
