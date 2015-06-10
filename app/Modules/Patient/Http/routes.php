@@ -11,4 +11,5 @@
 |
  */
 
+Route::get('patients/lists', ['as' => 'patients.lists', 'uses' => 'PatientController@lists']);
 Route::resource('patients', 'PatientController');

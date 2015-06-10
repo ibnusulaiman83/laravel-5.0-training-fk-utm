@@ -146,6 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
 		'Caffeinated\Modules\ModulesServiceProvider',
+		'Chumper\Datatable\DatatableServiceProvider',
 	],
 
 	/*
@@ -196,6 +197,7 @@ return [
 		'Form' => 'Collective\Html\FormFacade',
 		'Html' => 'Collective\Html\HtmlFacade',
 		'Module' => 'Caffeinated\Modules\Facades\Module',
+		'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
 	],
 
 ];

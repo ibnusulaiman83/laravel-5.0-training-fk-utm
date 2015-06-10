@@ -26,13 +26,13 @@
 						</div>
 					@endif
 
-					{!! Form::open(['class' => 'form-horizontal', 'method' => 'post', 'route' => 'patients.store']) !!}
+					{!! Form::open(['class' => 'form-horizontal', 'method' => 'patch', 'route' => ['patients.update', $patient->id]]) !!}
 
 						@include('Patient::Patient._form')
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								{!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+								{!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
 							</div>
 						</div>
 
